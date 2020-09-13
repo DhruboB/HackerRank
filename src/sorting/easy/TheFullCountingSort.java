@@ -5,11 +5,13 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
 
 public class TheFullCountingSort {
 
-//    public static void main(String[] args) {
+//    public static void main(String[] args) throws IOException {
+//
 //        BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
 //        int[] loc = null;
 //        String[] strs = null;
@@ -20,7 +22,11 @@ public class TheFullCountingSort {
 //            for(int i = 0 ; i < n; i++) {
 //                String[] str = bufferedReader.readLine().replaceAll("\\s+$", "").split(" ");
 //                loc[i] = Integer.parseInt(str[0]);
-//                strs[i] = str[1];
+//                if(i < n/2){
+//                    strs[i] = "-";
+//                }else{
+//                    strs[i] = str[1];
+//                }
 //            }
 //            sort(loc,strs);
 //            bufferedReader.close();
@@ -28,6 +34,44 @@ public class TheFullCountingSort {
 //            e.printStackTrace();
 //        }
 //    }
+
+    static void workingFineTune() throws IOException {
+            BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
+            int n = Integer.parseInt(bufferedReader.readLine().trim());
+            HashMap<Integer, ArrayList<String>> map = new HashMap<>();
+            HashMap<Integer, ArrayList<Integer>> index_Map = new HashMap<>();
+            int[] count = new int[n];
+
+            for(int i = 0 ; i < n; i++) {
+                String[] str = bufferedReader.readLine().replaceAll("\\s+$", "").split(" ");
+                int key =  Integer.parseInt(str[0]);
+                count[key]++;
+                String value =  str[1];
+                if(!map.containsKey(key)){
+                    map.put(key, new ArrayList<>());
+                    index_Map.put(key, new ArrayList<>());
+                }
+                index_Map.get(key).add(i);
+                map.get(key).add(value);
+            }
+
+            int mid = n/2;
+            StringBuffer sb = new StringBuffer();
+            for(int i = 0;i < n;i++ )
+            {
+                if(map.containsKey(i)){
+                    for(int j = 0;j < map.get(i).size();j++){
+                        int index = index_Map.get(i).get(j);
+                        String string = map.get(i).get(j);
+                        if(index < mid)
+                            sb.append("-").append(" ");
+                        else
+                            sb.append(string).append(" ");
+                    }
+                }
+            }
+            System.out.println(sb.toString());
+        }
 
     public static void main(String[] args) {
 //        String[][] arr = {{"0","ab"},{"0","ef"},{"6","cd"},{"6","gh"},{"0","ab"},{"1","or"},{"2","not"},{"0","ef"},{"0","ij"},{"0","to"},{"1","be"},{"4","ij"},{"4","that"},{"4","is"},{"4","the"},{"2","to"},{"3","be"},{"5","question"},{"6","cd"},{"6","gh"}};
@@ -45,7 +89,6 @@ public class TheFullCountingSort {
     static void sort(int[] loc, String[] strs){
 
         int max = Arrays.stream(loc).max().getAsInt();
-
         int[] temp = new int[max+1];
         StringBuilder[] tempStrns = new StringBuilder[max+1];
         for(int i=0; i < loc.length ; i++) {
@@ -72,7 +115,6 @@ public class TheFullCountingSort {
         }
         printArray(tempStrns);
     }
-
 
     static void printArray(int[] arr){
         for(int v: arr){
