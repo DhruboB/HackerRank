@@ -1,9 +1,5 @@
 package warmap;
 
-import com.sun.codemodel.internal.JForEach;
-
-import java.util.Scanner;
-
 public class _1SolveMeFirst {
 
     public static void main(String[] args) {
