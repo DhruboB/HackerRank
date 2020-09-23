@@ -22,7 +22,8 @@ public class QuickSort {
 
     static void sort(int[] arr,int low, int high){
         if(low < high){
-            int pivotIndex = partition(arr, low, high);
+//            int pivotIndex = partition(arr, low, high);
+            int pivotIndex = partition2(arr, low, high);
 
             sort(arr, low , pivotIndex - 1);
             sort(arr, pivotIndex + 1 , high);
@@ -42,6 +43,21 @@ public class QuickSort {
         swap(arr, index + 1, high);
         return index + 1;
     }
+
+    static int partition2(int[] arr, int left, int right){
+        int pivot = arr[(left+right)/2];
+        while(left < right){
+            while(arr[left] < pivot) left++;  //  2,3,7,4,8,1,6,9,4,8
+            while(arr[right] > pivot ) right--;
+            if(left < right){
+                swap(arr, left, right);
+                left++;
+                right--;
+            }
+        }
+        return left;
+    }
+
 
     static void swap(int[] arr, int i , int j){
         if(i!=j) {
