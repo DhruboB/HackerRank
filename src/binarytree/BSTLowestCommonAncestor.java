@@ -1,4 +1,4 @@
-package bst;
+package binarytree;
 
 public class BSTLowestCommonAncestor {
 
@@ -20,7 +20,8 @@ public class BSTLowestCommonAncestor {
         if(leftLCA != null && rightLCA != null )
             return root;
 
-        return leftLCA != null ? leftLCA : rightLCA;
+        return leftLCA != null ? leftLCA : rightLCA; // assumption is given nodes are present, else need to handle the
+                                                     // scenarios if not found then return NULL
     }
 
 
