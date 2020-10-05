@@ -1,3 +1,5 @@
+package extra;
+
 import java.io.*;
 
 public class ProblemSolving {
