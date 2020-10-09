@@ -13,16 +13,15 @@ public class HeapSort {
         System.out.println(Arrays.toString(arr));
     }
 
-    public void sort(int[] arr){
+    public void sort(int[] arr) {
         int len = arr.length;
-        for(int i = len/2 -1; i  >= 0 ; i--){
-            heapify(arr, len , i);
+        for (int i = len / 2 - 1; i >= 0; i--) {
+            heapify(arr, len, i);
         }
         System.out.println(Arrays.toString(arr));
 
         // One by one extract max element from heap array
-        for (int i=len-1; i>0; i--)
-        {
+        for (int i = len - 1; i > 0; i--) {
             // Move current root i.e. Max element to end of the array
             int temp = arr[0];
             arr[0] = arr[i];
@@ -33,26 +32,26 @@ public class HeapSort {
         }
     }
 
-    void heapify(int[] arr, int len , int root){
+    void heapify(int[] arr, int len, int root) {
         int largest = root;
-        int left = 2*largest + 1;
-        int right = 2*largest + 2;
+        int left = 2 * largest + 1;
+        int right = 2 * largest + 2;
         // If left child is larger than root
-        if(left < len && arr[left] > arr[largest]){
+        if (left < len && arr[left] > arr[largest]) {
             largest = left;
         }
         // If right child is larger than largest so far
-        if(right < len && arr[right] > arr[largest]){
+        if (right < len && arr[right] > arr[largest]) {
             largest = right;
         }
         // If largest is not root
-        if(largest != root){
+        if (largest != root) {
             int swap = arr[root];
             arr[root] = arr[largest];
             arr[largest] = swap;
 
             // Recursively heapify the affected sub-tree
-            heapify(arr,len, largest);
+            heapify(arr, len, largest);
         }
 
     }
