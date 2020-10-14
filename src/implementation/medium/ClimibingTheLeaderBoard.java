@@ -8,8 +8,11 @@ public class ClimibingTheLeaderBoard {
 //        Integer[] ranks  = {100,100,50,40,40,20,10};
 //        Integer[] scores = {5,25,50,120}; // 6 4 2 1
 
-        Integer[] ranks  = {100,90,90,80,75,60};
-        Integer[] scores = {50,65,77,90,102}; // 6 5 4 2 1
+//        Integer[] ranks  = {100,90,90,80,75,60};
+//        Integer[] scores = {50,65,77,90,102}; // 6 5 4 2 1
+
+        Integer[] ranks  = {1};
+        Integer[] scores = {1,1}; // 1 1
 
         List<Integer> ranked = Arrays.asList(ranks);
         List<Integer> player = Arrays.asList(scores);
@@ -52,6 +55,7 @@ public class ClimibingTheLeaderBoard {
         for(Integer playerScore : player){
             Integer closestPrevScore = searchRanks(playerScore,ranked);
             Integer closestRank = rankMap.get(closestPrevScore);
+            if(closestRank == null ) closestRank = 0;
             playerRanks.add(closestPrevScore > playerScore ?  ++closestRank : closestRank);
         }
         return playerRanks;
@@ -62,7 +66,7 @@ public class ClimibingTheLeaderBoard {
         int start = 0;
         int end = ranked.size() - 1;
         int mid = 0;
-        Integer midValue = 0;
+        Integer midValue = ranked.get(mid);
         while(start < end){
             mid = (start + end)/2;
             midValue = ranked.get(mid);
