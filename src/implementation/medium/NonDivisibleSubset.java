@@ -5,11 +5,14 @@ import java.util.*;
 public class NonDivisibleSubset {
 
     public static void main(String[] args) {
-        Integer[] arr = {1,7,2,4};
-        int k = 3;
+//        Integer[] arr = {1,7,2,4};
+//        int k = 3; // 3
 
-//        Integer[] arr = {1,7,2,4,5,7,8,9,2,10,6};
-//        int k = 1;
+//        Integer[] arr = {3,3};
+//        int k = 3; // 3
+
+        Integer[] arr = {1,7,2,4,5,7,8};
+        int k = 4;
 
 //        Integer[] arr = {278,576,496,727,410,124,338,149,209,702,282,718,771,575,436};
 //        int k = 7; // 11
@@ -24,8 +27,8 @@ public class NonDivisibleSubset {
         Integer remainder = 0;
         Integer num = 0;
         for(int i=0; i < s.size(); i++){
-                num = s.get(i);
-                remainder = num % k;
+            num = s.get(i);
+            remainder = num % k;
             if(!map.containsKey(remainder)){
                 map.put(remainder, new ArrayList<Integer>());
             }
@@ -35,14 +38,18 @@ public class NonDivisibleSubset {
         List<Integer> list2 = null;
         int size1 = 0;
         int size2 = 0;
-        for(int i=0; i<k/2+1 ; i++){
+//        int halfMark = k%2 == 0 ? k/2 : k/2 +1;
+        int halfMark = k/2 +1;
+        for(int i=0; i < halfMark ; i++){
             list1 = map.get(i);
             list2 = map.get(k-i);
             size1 = (list1 != null && list1.size() != 0) ? list1.size() : 0;
             size2 = (list2 != null && list2.size() != 0) ? list2.size() : 0;
-            if(i == 0 && size1 != 0){
+            if(i == 0 && size1 != 0 ){
                 longestLength++;
-            }else {
+            }else if( k%2 == 0 && i == k/2 && size1 != 0){
+                longestLength++;
+            } else {
                 longestLength += (size1 > size2 ? size1 : size2);
             }
         }
