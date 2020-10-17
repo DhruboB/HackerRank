@@ -1,4 +1,4 @@
-package implementation.easy;
+package implementation;
 
 public class BreakingTheRecords {
 

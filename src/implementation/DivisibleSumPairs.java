@@ -1,4 +1,4 @@
-package implementation.medium;
+package implementation;
 
 public class DivisibleSumPairs {
 

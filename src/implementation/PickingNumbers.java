@@ -1,4 +1,4 @@
-package implementation.easy;
+package implementation;
 
 import java.util.Arrays;
 import java.util.Collections;

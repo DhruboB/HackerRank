@@ -1,4 +1,4 @@
-package implementation.medium;
+package implementation;
 
 import java.util.Arrays;
 
