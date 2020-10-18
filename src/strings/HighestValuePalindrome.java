@@ -1,4 +1,4 @@
-package strings.medium;
+package strings;
 
 /**
  * TODO WRONG solution. will be improved soon.

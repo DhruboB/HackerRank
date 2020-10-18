@@ -1,18 +1,19 @@
-package sorting.easy;
+package sorting;
 
-public class CorrectnessAndTheLoopInvariant {
+public class RunningTimeOfAlgorithm {
     public static void insertionSort(int[] A){
+        int counter = 0;
         for(int i = 1; i < A.length; i++){
             int value = A[i];
             int j = i - 1;
             while(j >=0 && A[j] > value){
                 A[j + 1] = A[j];
                 j = j - 1;
+                counter++;
             }
             A[j + 1] = value;
         }
-
-        printArray(A);
+        System.out.println(counter);
     }
 
 
@@ -22,9 +23,7 @@ public class CorrectnessAndTheLoopInvariant {
         }
     }
     public static void main(String[] args) {
-        int[] arr = {9,8,10,3,4,7,5,6,2,1};
+        int[] arr = {2, 1, 3, 1,2 };
         insertionSort(arr);
     }
-
-
 }

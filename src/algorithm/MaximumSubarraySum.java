@@ -1,4 +1,4 @@
-package algorithm.hard;
+package algorithm;
 
 import java.util.Iterator;
 import java.util.SortedSet;

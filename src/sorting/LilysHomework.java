@@ -1,4 +1,4 @@
-package sorting.medium;
+package sorting;
 
 import java.util.*;
 

@@ -1,4 +1,4 @@
-package sorting.medium;
+package sorting;
 
 public class FraudulentActivityNotifications {
 

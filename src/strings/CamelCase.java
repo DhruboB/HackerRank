@@ -1,4 +1,4 @@
-package strings.easy;
+package strings;
 
 public class CamelCase {
 

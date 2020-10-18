@@ -1,4 +1,4 @@
-package sorting.easy;
+package sorting.algo;
 
 public class Countingsort1 {
 

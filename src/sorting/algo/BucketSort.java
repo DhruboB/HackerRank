@@ -1,4 +1,4 @@
-package sorting.easy;
+package sorting.algo;
 
 // Java program to sort an array
 // using bucket sort

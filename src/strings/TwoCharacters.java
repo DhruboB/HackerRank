@@ -1,4 +1,4 @@
-package strings.easy;
+package strings;
 
 import java.util.*;
 
