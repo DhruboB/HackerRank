@@ -1,5 +1,6 @@
 package search;
 
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -11,25 +12,26 @@ public class IceCreamParlor {
         int[] cost = {1,4,5,3,2};
         int money = 4; // 1,4
 
-        whatFlavors(cost,money);
+        System.out.println(Arrays.toString(icecreamParlor(cost,money)));
     }
 
-    static void whatFlavors(int[] cost, int money) {
+    static int[] icecreamParlor(int[] cost, int money) {
 
-        Map<Integer,Integer> map = new HashMap<>();
-
-        for(int i = 0 ; i < cost.length ; i++){
-            if(map.containsKey(cost[i])){
-                System.out.println(map.get(cost[i]) + " " + (i+1));
-                return;
+        // Sort the cost along with original positions
+        // get the complementary cost for each item and search in remaining items
+        // found then return both complementary postions
+        int len =cost.length;
+        int[] ans = new int[2];
+        Map<Integer, Integer> map = new HashMap<>();
+        for(int i = 0 ; i < len ; i++){
+            if(map.containsKey(money - cost[i])){
+                ans[0] = map.get(money - cost[i]);
+                ans[1] = i+1;
+                break;
             }
-            if(isPurchasable(cost[i],money)) {
-                map.put(money - cost[i], i + 1);
-            }
+            map.put(cost[i], i+1);
         }
+        return ans;
     }
 
-    static boolean isPurchasable(int cost, int money){
-        return cost > money ? false : true;
-    }
 }
