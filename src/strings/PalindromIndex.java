@@ -44,7 +44,7 @@ public class PalindromIndex {
      */
 
     public static void main(String[] args) {
-        String s = "rvscdpyljqglgmiktfndsmfnkgmubrruloqptgohsgneocoyyocoengshogtpqolurrbumgknfmsdntkimglgqjlypdcsvr";
+        String s = "lfcwnnwcwfl"; //
 //        String s = "yiguugtpsypfudffswvwyswyyiiyywsywvsffdufpysptguugiy"; // 17
         System.out.println(palindromeIndex(s));
     }
@@ -64,12 +64,12 @@ public class PalindromIndex {
                     return -1;
                 }
                 isSkippedOnce = true;
-                if(s.charAt(start) == s.charAt(end-1) && (end > start && isPalidrom(s.substring(start,end - 1)))){
-                    indexToBeRemoved = end;
-                    end--;
-                } else if(s.charAt(start+1) == s.charAt(end)){
-                    indexToBeRemoved = start;
-                    start++;
+                if(s.charAt(start) == s.charAt(end-1) && isPalidrom(s.substring(start,end))){
+                        indexToBeRemoved = end;
+                        end--;
+                } else if(s.charAt(start+1) == s.charAt(end) && isPalidrom(s.substring(start+1,end+1))){
+                        indexToBeRemoved = start;
+                        start++;
                 }else {
                     return  -1;
                 }
