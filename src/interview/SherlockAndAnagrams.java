@@ -29,17 +29,16 @@ public class SherlockAndAnagrams {
     }
 
     private static boolean isAnagram(String str1, String str2){
-        int[] count1 = new int[26];
-        int[] count2 = new int[26];
+        int[] count = new int[26];
         if(str1.length() != str2.length()) return false;
         for(char c : str1.toCharArray()){
-            count1[c - 'a']++;
+            count[c - 'a']++;
         }
         for(char c : str2.toCharArray()){
-            count2[c - 'a']++;
+            count[c - 'a']--;
         }
         for(int i = 0 ; i < 26 ; i++){
-            if(count1[i] != count2[i]) return false;
+            if(count[i] != 0) return false;
         }
         return true;
     }
