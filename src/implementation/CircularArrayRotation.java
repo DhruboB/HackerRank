@@ -18,21 +18,16 @@ public class CircularArrayRotation {
 
     // Complete the circularArrayRotation function below.
     static int[] circularArrayRotation(int[] a, int k, int[] queries) {
-        int len  = a.length;
-        int[] helper  = new int[len];
-        int j = k%len;
-        int count = 0;
-        for(int i= 0 ; i < len ; i++){
-            if(i <= len -1 - k){
-                helper[i+j] = a[i];
-            }else{
-                helper[count++] = a[i];
+        int[] ans = new int[queries.length];
+        int rot = k % a.length;
+        for(int i = 0 ; i < queries.length ; i++){
+            if (queries[i] - rot >= 0){
+                ans[i] = a[(queries[i] -  rot)];
+            } else{
+                ans[i] = a[(queries[i] - rot + a.length)];
             }
         }
-        for(int i= 0 ; i < queries.length ; i++){
-            queries[i] = helper[queries[i]];
-        }
-        return queries;
+        return ans;
     }
 
     // Complete the circularArrayRotation function below.
